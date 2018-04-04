@@ -5,13 +5,16 @@ This module lets you practice  ** using objects **, including:
   -- accessing their DATA via INSTANCE VARIABLES
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Yi Li.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
 
 def main():
+    two_circles()
+    circle_and_rectangle()
+    lines()
     """ Calls the other functions to demonstrate and/or test them. """
     # Test your functions by putting calls to them here:
 
@@ -27,12 +30,26 @@ def two_circles():
     -- Waits for the user to press the mouse, then closes the window.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this function, per its doc-string above.
+    # DONE: 2. Implement this function, per its doc-string above.
     #    -- ANY two rg.Circle objects that meet the criteria are fine.
     #    -- File  COLORS.txt  lists all legal color-names.
     # Put a statement in   main   to test this function
     #    (by calling this function).
     # -------------------------------------------------------------------------
+    window1 = rg.RoseWindow()
+
+    point1 = rg.Point(25, 25)
+    circle1 = rg.Circle(point1, 20)
+    point2 = rg.Point(100, 100)
+    circle2 = rg.Circle(point2, 50)
+
+    circle1.fill_color = 'red'
+    circle1.attach_to(window1)
+    circle2.attach_to(window1)
+
+    window1.render()
+
+    window1.close_on_mouse_click()
 
 
 def circle_and_rectangle():
@@ -66,8 +83,44 @@ def circle_and_rectangle():
            75.0
            150.0
     """
+    window2 = rg.RoseWindow()
+
+    x3 = 200
+    y3 = 175
+    point3 = rg.Point(x3, y3)
+    circle3 = rg.Circle(point3, 75)
+    circle3.fill_color = 'blue'
+
+    x1 = 120
+    y1 = 30
+    x2 = 50
+    y2 = 80
+    corner1 = rg.Point(x1, y1)
+    corner2 = rg.Point(x2, y2)
+    rectangle = rg.Rectangle(corner1, corner2)
+
+    circle3.attach_to(window2)
+    rectangle.attach_to(window2)
+
+    print('1')
+    print('blue')
+    print(point3)
+    print(point3.x)
+    print(point3.y)
+
+    print('1')
+    print('None')
+    rcenter = rg.Point((x1 + x2) / 2, (y1 + y2) / 2)
+    print(rcenter)
+    print(rcenter.x)
+    print(rcenter.y)
+
+    window2.render()
+
+    window2.close_on_mouse_click()
+
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement this function, per its doc-string above.
+    # DONE: 3. Implement this function, per its doc-string above.
     #   -- ANY objects that meet the criteria are fine.
     # Put a statement in   main   to test this function
     #    (by calling this function).
@@ -78,6 +131,31 @@ def circle_and_rectangle():
 
 
 def lines():
+
+    window = rg.RoseWindow()
+
+    point1 = rg.Point(50, 100)
+    point2 = rg.Point(150, 200)
+    line1 = rg.Line(point1, point2)
+    line1.thickness = 20
+    point3 = rg.Point(200, 79)
+    point4 = rg.Point(350, 290)
+    line2 = rg.Line(point3, point4)
+    line2.thickness = 50
+
+    line1.attach_to(window)
+    line2.attach_to(window)
+
+    midpoint = line2.get_midpoint()
+
+    print(midpoint)
+    print(midpoint.x)
+    print(midpoint.y)
+
+    window.render()
+
+    window.close_on_mouse_click()
+
     """
     -- Constructs a rg.RoseWindow.
     -- Constructs and draws on the window two rg.Lines such that:
@@ -100,11 +178,12 @@ def lines():
     -- Waits for the user to press the mouse, then closes the window.
     """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     # -------------------------------------------------------------------------
 
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
+
 main()
